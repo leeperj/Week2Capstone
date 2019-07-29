@@ -65,20 +65,22 @@ namespace Week2Capstone
                     foreach (Task taskInfo in Task.tasks)
                     {
                         taskInfo.PrintInfo(taskCount3);
-
+                        taskCount3++;
                     }
                     Console.WriteLine("Whose task would you like to mark completed? Enter number.");
                     int completeInput = int.Parse(Console.ReadLine());
+                    completeInput--;
                     bool valid = true;
                         while (valid)
                     {
-                        if(completeInput < 1 || completeInput > Task.tasks.Count)
+                        if(completeInput > 0 && completeInput <= Task.tasks.Count)
                         {
-                            Console.WriteLine("Please enter a number in range.");
+                            Task.tasks[completeInput].Completed = true;
+                            break;
                         }
                         else
                         {
-                            
+                            Console.WriteLine("Please enter a number in range.");
                             valid = false;
                         }
                     
